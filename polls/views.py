@@ -1,21 +1,25 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.views import generic
 
 from .models import Project, Rating
 
-def index(request):
-    latest_project_list = Project.objects.order_by('-pub_date')[:5]
-    context = {'latest_project_list': latest_project_list}
-    return render(request, 'polls/index.html', context)
 
-def detail(request, project_id):
-    project = get_object_or_404(Project, pk=project_id)
-    return render(request, 'polls/detail.html', {'project': project})
+class IndexView(generic.ListView):
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_project_list'
+    
+    def get_queryset(self):
+        return Project.objects.order_by('-pub_date')[:5]
 
-def results(request, project_id):
-    project = get_object_or_404(Project, pk=project_id)
-    return render(request, 'polls/results.html', {'project': project})
+class DetailView(generic.DetailView):
+    model = Project
+    template_name = 'polls/detail.html'
+
+class ResultsView(generic.DetailView):
+    model = Project
+    template_name = 'polls/results.html'
 
 def rate(request, project_id):
     project = get_object_or_404(Project, pk=project_id)

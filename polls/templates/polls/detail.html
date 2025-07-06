@@ -1,5 +1,6 @@
-<h1>{{ project.project_name }}</h1>
-<p>{{ project.project_detail }}</p>
+<h1>제목: {{ project.project_name }}</h1>
+<p>제작자: {{ project.project_author }}</p>
+<p>내용: {{ project.project_detail }}</p>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

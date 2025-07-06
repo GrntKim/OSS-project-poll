@@ -1,9 +1,10 @@
+<h1>프로젝트 목록</h1>
 {% if latest_project_list %}
-    <ul>
+    <ol>
     {% for project in latest_project_list %}
         <li><a href="{% url 'polls:detail' project.id %}">{{ project.project_name }}</a></li>
     {% endfor %}
-    </ul>
+    </ol>
 {% else %}
     <p>No projects are available.</p>
 {% endif %}

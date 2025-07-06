@@ -1,5 +1,6 @@
-<h1>{{ project.project_name }}</h1>
-<p>{{ project.project_detail }}</p>
+<h1>제목: {{ project.project_name }}</h1>
+<p>제작자: {{ project.project_author }}</p>
+<p>내용: {{ project.project_detail }}</p>
 
 <h2>평균 평점: {{ project.average_score|floatformat:1 }} / 5</h2>
 
@@ -11,7 +12,4 @@
     {% endfor %}
 </ul>
 
-<form action="{% url 'polls:rate' project.id %}" method="post">
-    {% csrf_token %}
-    <input type="submit" value="다시 투표하기">
-</form>
+<a href="{% url 'polls:detail' project.id %}">돌아가기</a>

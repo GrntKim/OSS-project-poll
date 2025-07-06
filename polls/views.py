@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
@@ -27,7 +27,5 @@ def rate(request, project_id):
             'error_message': "점수를 선택하세요.",
         })
     else:
-        # 새 평점 객체 생성
         Rating.objects.create(project=project, score=score)
-        # 결과 페이지로 이동
         return HttpResponseRedirect(reverse('polls:results', args=(project.id,)))

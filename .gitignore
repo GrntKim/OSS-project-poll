@@ -1,11 +1,41 @@
 # Django 관련
 *.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # DB 파일
 db.sqlite3
 
 # 환경설정
 .env
+.env.local
+.env.production
 
 # VSCode 등 IDE 설정
 .vscode/
+.idea/
+
+# Static files
+staticfiles/
+
+# Media files
+media/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

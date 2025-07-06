@@ -1,20 +1,33 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 
-from .models import Project
+from .models import Project, Rating
 
 def index(request):
-    latest_project_list = Project.objects.order_by('-_pub_date')[:5]
+    latest_project_list = Project.objects.order_by('-pub_date')[:5]
     context = {'latest_project_list': latest_project_list}
     return render(request, 'polls/index.html', context)
 
 def detail(request, project_id):
-    project = Project.objects.get(pk=project_id)
+    project = get_object_or_404(Project, pk=project_id)
     return render(request, 'polls/detail.html', {'project': project})
 
 def results(request, project_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % project_id)
+    project = get_object_or_404(Project, pk=project_id)
+    return render(request, 'polls/results.html', {'project': project})
 
-def vote(request, project_id):
-    return HttpResponse("You're voting on project No %s." % project_id)
+def rate(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    try:
+        score = int(request.POST['choice'])
+    except (KeyError, ValueError):
+        return render(request, 'polls/detail.html', {
+            'project': project,
+            'error_message': "점수를 선택하세요.",
+        })
+    else:
+        # 새 평점 객체 생성
+        Rating.objects.create(project=project, score=score)
+        # 결과 페이지로 이동
+        return HttpResponseRedirect(reverse('polls:results', args=(project.id,)))

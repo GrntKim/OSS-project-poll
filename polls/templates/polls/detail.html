@@ -1,0 +1,16 @@
+<h1>{{ project.project_name }}</h1>
+<p>{{ project.project_detail }}</p>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:rate' project.id %}" method="post">
+    {% csrf_token %}
+    <label>점수 선택:</label>
+    {% for i in "12345" %}
+        <input type="radio" name="choice" value="{{ i }}"> {{ i }}점
+    {% endfor %}
+    <button type="submit">투표</button>
+</form>
+
+<a href="{% url 'polls:results' project.id %}">결과 보기</a>
+<a href="{% url 'polls:index' %}">목록으로</a>

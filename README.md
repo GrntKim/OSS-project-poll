@@ -1,6 +1,5 @@
 # OSS Project Poll
 
-Project polling website implemented with Django and Docker.
 
 ## 프로젝트 개요
 
@@ -62,7 +61,7 @@ docker-compose down
 - **메인 페이지**: http://localhost:8000
 - **관리자 페이지**: http://localhost:8000/admin
 
-### 기본 관리자 계정
+## 기본 관리자 계정
 - **Username**: `admin`
 - **Password**: `admin123`
 - **Email**: `admin@example.com`

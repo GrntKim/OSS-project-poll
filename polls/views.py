@@ -11,7 +11,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_project_list'
     
     def get_queryset(self):
-        return Project.objects.order_by('-pub_date')[:5]
+        return Project.objects.order_by('-pub_date')
 
 class DetailView(generic.DetailView):
     model = Project

@@ -1,7 +1,7 @@
 /* 프로젝트 목록 페이지 스타일 */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #eee;
     margin: 0;
     padding: 20px;
     min-height: 100vh;
@@ -11,18 +11,30 @@ body {
     max-width: 800px;
     margin: 0 auto;
     background: white;
-    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     padding: 30px;
 }
 
+.project-fieldset {
+    border: none;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+.project-legend {
+    border-bottom: 3px solid #f27676;
+}
+
 h1 {
     color: #2c3e50;
-    text-align: center;
+    text-align: left;
     margin-bottom: 30px;
-    font-size: 2.5em;
+    font-size: 2em;
     font-weight: 300;
-    border-bottom: 3px solid #3498db;
+    border-bottom: 3px solid #f27676;
     padding-bottom: 15px;
 }
 
@@ -30,34 +42,59 @@ h1 {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    gap: 20px;
 }
 
-.project-list li {
-    margin-bottom: 15px;
-    transition: transform 0.2s ease;
+.project-item {
+    margin: 0;
 }
 
-.project-list li:hover {
-    transform: translateX(10px);
-}
-
-.project-list a {
-    display: block;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 1.1em;
-    font-weight: 500;
-    box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+.project-card {
+    background: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border: 2px solid transparent;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.project-list a:hover {
-    background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
-    box-shadow: 0 6px 20px rgba(116, 185, 255, 0.4);
-    transform: translateY(-2px);
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: #f27676;
+}
+
+
+.project-card a {
+    display: block;
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.project-card a:hover {
+    color: #f27676;
 }
 
 .no-projects {
@@ -69,4 +106,30 @@ h1 {
     background: #f8f9fa;
     border-radius: 10px;
     border: 2px dashed #bdc3c7;
+}
+
+.project-name {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 300;
+    padding-bottom: 15px;
+}
+
+/* 반응형 그리드 */
+@media (min-width: 768px) {
+    .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .project-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card {
+        padding: 20px;
+    }
 }

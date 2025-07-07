@@ -11,9 +11,16 @@
     <div class="container">
         <h1>프로젝트 목록</h1>
         {% if latest_project_list %}
-            <ol>
+            <ol class="project-list">
             {% for project in latest_project_list %}
-                <li><a href="{% url 'polls:detail' project.id %}">{{ project.project_name }}</a></li>
+                <li class="project-item">
+                    <div class="project-card">
+                        <a href="{% url 'polls:detail' project.id %}">
+                            <p class="project-name">{{ project.project_name }}</p>
+                            <p><i>by {{ project.project_author }}</i></p>
+                        </a>
+                    </div>
+                </li>
             {% endfor %}
             </ol>
         {% else %}

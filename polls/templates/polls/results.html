@@ -9,21 +9,37 @@
 </head>
 <body>
     <div class="container">
-        <h1>제목: {{ project.project_name }}</h1>
-        <p>제작자: {{ project.project_author }}</p>
-        <p>내용: {{ project.project_detail }}</p>
+        <h1>투표 결과</h1>
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">제목</legend>
+            {{ project.project_name }}
+        </fieldset>
+        <br>
+
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">제작자</legend>
+            {{ project.project_author }}
+        </fieldset>
+        <br>
+
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">내용</legend>
+            {{ project.project_detail }}
+        </fieldset>
+        <br>
         
-        <h2>평균 평점: {{ project.average_score|floatformat:1 }} / 5</h2>
-        
-        <ul>
-            {% for rating in project.rating_set.all %}
-                <li>{{ rating.score }}점</li>
-            {% empty %}
-                <li>아직 투표가 없습니다.</li>
-            {% endfor %}
-        </ul>
-        
-        <a href="{% url 'polls:detail' project.id %}">돌아가기</a>
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">투표 결과</legend>
+            <h2>{{ project.average_score|floatformat:1 }} / 5 점</h2>
+            <ul>
+                {% for rating in project.rating_set.all %}
+                    <li>{{ rating.score }}점</li>
+                {% empty %}
+                    <li>아직 투표가 없습니다.</li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'polls:detail' project.id %}"><button>돌아가기</button></a>
+        </fieldset>
     </div>
     
 </body>

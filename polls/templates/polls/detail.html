@@ -9,23 +9,40 @@
 </head>
 <body>
     <div class="container">
-        <h1>제목: {{ project.project_name }}</h1>
-        <p>제작자: {{ project.project_author }}</p>
-        <p>내용: {{ project.project_detail }}</p>
+        <h1>프로젝트 내용</h1>
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">제목</legend>
+            {{ project.project_name }}
+        </fieldset>
+        <br>
+
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">제작자</legend>
+            {{ project.project_author }}
+        </fieldset>
+        <br>
+
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">내용</legend>
+            {{ project.project_detail }}
+        </fieldset>
+        <br>
         
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         
-        <form action="{% url 'polls:rate' project.id %}" method="post">
-            {% csrf_token %}
-            <label>점수 선택:</label>
-            {% for i in "12345" %}
-                <input type="radio" name="choice" value="{{ i }}"> {{ i }}점
-            {% endfor %}
-            <button type="submit">투표</button>
-        </form>
-        
-        <a href="{% url 'polls:results' project.id %}">결과 보기</a>
-        <a href="{% url 'polls:index' %}">목록으로</a>
+        <fieldset class="project-fieldset">
+            <legend class="project-legend">투표</legend>
+            <form action="{% url 'polls:rate' project.id %}" method="post">
+                {% csrf_token %}
+                {% for i in "12345" %}
+                    <input type="radio" name="choice" value="{{ i }}"> {{ i }}점
+                {% endfor %}
+                <button type="submit">투표</button>
+            </form>
+            <br>
+            <a href="{% url 'polls:results' project.id %}"><button>결과 보기</button></a>
+            <a href="{% url 'polls:index' %}"><button>목록으로</button></a>
+        </fieldset>
     </div>
 </body>
 </html>

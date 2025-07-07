@@ -6,3 +6,5 @@ services:
     volumes:
       - ./db.sqlite3:/app/db.sqlite3
     restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1

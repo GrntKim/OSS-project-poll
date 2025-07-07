@@ -1,7 +1,7 @@
 # OSS-project-poll
 Project polling website implemented with git, django and docker
 
-### Usage
+## Usage
 \# start \
 docker-compose up --build
 
@@ -9,7 +9,7 @@ docker-compose up --build
 docker-compose down
 
 
-### Default admin account
+## Default admin account
 Username: admin \
 Password: admin123 \
 email: admin@example.com 

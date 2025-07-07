@@ -10,14 +10,19 @@ Project polling website implemented with Django and Docker.
 
 1.  **프로젝트 목록 조회**
     - 등록된 모든 프로젝트 목록 확인
+
 2.  **프로젝트 상세 정보**
     - 프로젝트명, 제작자, 상세 내용 확인
+
 3.  **평점 투표**
     - 1-5점 척도로 프로젝트 평가
+
 4.  **투표 결과**
     - 실시간 투표 결과 및 통계 확인
+
 5. ️ **관리자 기능**: 
     - Django Admin을 통한 프로젝트 관리
+    - 투표율 높은 순으로 프로젝트 목록 열람 가능
 
 ## 기술 스택
 
@@ -34,33 +39,20 @@ Project polling website implemented with Django and Docker.
 - Docker
 - Docker Compose
 
-### 빠른 시작
+### 사용 방법
 
 ```bash
 # 저장소 클론
 git clone https://github.com/GrntKim/OSS-project-poll.git
 cd OSS-project-poll
 
-# 빌드 및 실행
-docker-compose up --build
-```
-
-### 상세 실행 방법
-
-```bash
 # 첫 실행 (빌드 포함)
-docker-compose up --build
+docker-compose up --build -d
 
 # 이후 실행
-docker-compose up
-
-# 백그라운드 실행
 docker-compose up -d
 
 # 중지
-Ctrl + C
-
-# 컨테이너 삭제 및 저장된 데이터 초기화
 docker-compose down
 ```
 

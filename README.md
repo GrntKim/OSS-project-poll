@@ -27,7 +27,7 @@ Project polling website implemented with Django and Docker.
 ## 기술 스택
 
 - **Backend**: Django 4.2.23
-- **Frontend**: HTML5, CSS5
+- **Frontend**: HTML5, CSS3
 - **Database**: SQLite3
 - **Container**: Docker
 - **Language**: Python 3.11

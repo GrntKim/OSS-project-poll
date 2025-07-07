@@ -17,18 +17,6 @@
         <br>
 
         <fieldset class="project-fieldset">
-            <legend class="project-legend">제작자</legend>
-            {{ project.project_author }}
-        </fieldset>
-        <br>
-
-        <fieldset class="project-fieldset">
-            <legend class="project-legend">내용</legend>
-            {{ project.project_detail }}
-        </fieldset>
-        <br>
-        
-        <fieldset class="project-fieldset">
             <legend class="project-legend">투표 결과</legend>
             <h2>{{ project.average_score|floatformat:1 }} / 5 점</h2>
             <ul>

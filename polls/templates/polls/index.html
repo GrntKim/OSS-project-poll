@@ -1,10 +1,24 @@
-<h1>프로젝트 목록</h1>
-{% if latest_project_list %}
-    <ol>
-    {% for project in latest_project_list %}
-        <li><a href="{% url 'polls:detail' project.id %}">{{ project.project_name }}</a></li>
-    {% endfor %}
-    </ol>
-{% else %}
-    <p>No projects are available.</p>
-{% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 목록</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>프로젝트 목록</h1>
+        {% if latest_project_list %}
+            <ol>
+            {% for project in latest_project_list %}
+                <li><a href="{% url 'polls:detail' project.id %}">{{ project.project_name }}</a></li>
+            {% endfor %}
+            </ol>
+        {% else %}
+            <p>No projects are available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

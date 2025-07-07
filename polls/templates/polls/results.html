@@ -1,15 +1,30 @@
-<h1>제목: {{ project.project_name }}</h1>
-<p>제작자: {{ project.project_author }}</p>
-<p>내용: {{ project.project_detail }}</p>
-
-<h2>평균 평점: {{ project.average_score|floatformat:1 }} / 5</h2>
-
-<ul>
-    {% for rating in project.rating_set.all %}
-        <li>{{ rating.score }}점</li>
-    {% empty %}
-        <li>아직 투표가 없습니다.</li>
-    {% endfor %}
-</ul>
-
-<a href="{% url 'polls:detail' project.id %}">돌아가기</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투표 결과</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>제목: {{ project.project_name }}</h1>
+        <p>제작자: {{ project.project_author }}</p>
+        <p>내용: {{ project.project_detail }}</p>
+        
+        <h2>평균 평점: {{ project.average_score|floatformat:1 }} / 5</h2>
+        
+        <ul>
+            {% for rating in project.rating_set.all %}
+                <li>{{ rating.score }}점</li>
+            {% empty %}
+                <li>아직 투표가 없습니다.</li>
+            {% endfor %}
+        </ul>
+        
+        <a href="{% url 'polls:detail' project.id %}">돌아가기</a>
+    </div>
+    
+</body>
+</html>

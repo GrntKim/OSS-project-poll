@@ -18,7 +18,7 @@
 
         <fieldset class="project-fieldset">
             <legend class="project-legend">투표 결과</legend>
-            <h2>{{ project.average_score|floatformat:1 }} / 5 점</h2>
+            <h2>평균: {{ project.average_score|floatformat:1 }}점</h2>
             <ul>
                 {% for rating in project.rating_set.all %}
                     <li>{{ rating.score }}점</li>

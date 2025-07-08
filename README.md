@@ -58,10 +58,10 @@ docker-compose down
 
 ## 접속 주소
 
-- **메인 페이지**: http://localhost:8000
+- **어플리케이션 페이지**: http://localhost:8000/polls
 - **관리자 페이지**: http://localhost:8000/admin
 
 ## 기본 관리자 계정
 - **Username**: `admin`
 - **Password**: `admin123`
-- **Email**: `admin@example.com`
+- **Email(입력 불필요)**: `admin@example.com`

@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    # 메인 어플리케이션, 사용자 접근
     path('polls/', include('polls.urls')),
+    # 관리자 페이지, 관리자가 로그인
     path('admin/', admin.site.urls),
 ]
